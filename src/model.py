@@ -14,7 +14,7 @@ def build_model(input_shape):
     model.add(layers.Input(shape=input_shape))
     model.add(layers.Conv2D(16, (3, 3), activation='relu', padding='same'))
     model.add(layers.MaxPooling2D((2, 2)))
-    model.add(layers.BatchNormalization()) # Helps with training stability
+    model.add(layers.BatchNormalization())
 
     # --- Block 2: Mid-level features (Textures/Patterns) ---
     model.add(layers.Conv2D(32, (3, 3), activation='relu', padding='same'))
@@ -30,7 +30,7 @@ def build_model(input_shape):
     
     # Dense layer with Dropout to prevent overfitting on your small dataset
     model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dropout(0.5)) # Randomly turns off 50% of neurons during training
+    model.add(layers.Dropout(0.5))
     
     # Output Layer: 1 Neuron (Sigmoid) because it's Binary (0 or 1)
     model.add(layers.Dense(1, activation='sigmoid'))
